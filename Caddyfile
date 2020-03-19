@@ -1,0 +1,9 @@
+chx.rip{
+ root /www/wwwroot/chxrip
+ timeouts none
+ gzip
+ log / /usr/local/caddy/log/web.log "{remote} - {user} [{when}] {when_unix} \"{method} {uri} {proto}\" {status} {size} \"{>Referer}\" \"{>User-Agent}\""
+ realip {
+    from 0.0.0.0/0
+ }
+}
