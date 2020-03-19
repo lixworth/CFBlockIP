@@ -35,6 +35,9 @@ GlobalAPIKey=""
 ZoneID=""
 
 for IPAddr in $ip; do
+if[$IPAddr -eq "127.0.0.1"]; then
+
+else
 
 curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZoneID/firewall/access_rules/rules" \
   -H "X-Auth-Email: $CFEmail" \
@@ -42,4 +45,5 @@ curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZoneID/firewall/acc
   -H "Content-Type: application/json" \
   --data '{"mode":"block","configuration":{"target":"ip","value":"'$IPAddr'"},"notes":"CC/DDOS Attatch"}'
 
+fi
 done
